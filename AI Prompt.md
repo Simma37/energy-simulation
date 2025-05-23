@@ -30,7 +30,7 @@ The balancing algorithm must allow you to enable/disable each phase (e.g., wind 
 
 Detailed per-zone metrics (e.g., wind used, local hydro production, imported energy, exported energy, unmet demand, and water used for hydro production) must be captured daily.
 
-Energy transfers (imports/exports) must be recorded with details, including:
+#### Energy transfers (imports/exports) must be recorded with details, including:
 
 Number of hops (1 for direct, 2 for two-hop)
 
@@ -78,6 +78,8 @@ Organize the code into these files and directories:
 
 python
 Kopier
+
+```
 energy_distribution/
 ├── models.py          # Data structures: EnergyZone, Connection
 ├── simulator.py       # Simulator engine: advances simulation day-by-day, updates water storage, aggregates per-zone metrics, and computes daily summary.
@@ -99,7 +101,7 @@ energy_distribution/
 ├── run_simulation.py  # Driver script: uses config.py values (with ability to override via command-line), loads data, runs simulation, and calls visualization functions.
 ├── tests/             # Unit and integration tests for core modules (models, simulator, balancing).
 └── examples/          # Example configuration files (e.g., example_config.json)
-
+```
 ## 3. Data Loading and Configuration
 Input Files:
 
