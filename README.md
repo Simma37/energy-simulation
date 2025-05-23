@@ -45,7 +45,6 @@ This Python module simulates daily energy distribution across multiple interconn
 ```bash
 python run_simulation.py
 ```
-
 Make sure your input CSV files are correctly formatted and placed in the appropriate folder.
 
 The simulation behavior is controlled by `config.py`, which contains key parameters affecting the results:
@@ -85,11 +84,11 @@ Example:
 - `NO1_Wind_Production.csv`
 
 
-## Input File Format Specifications
+### Input File Format Specifications
 
 Each input file must follow a standardized format as described below. These formats are essential for the parser to read and align the data properly.
 
-### 1. Effective Inflow Files
+#### 1. Effective Inflow Files
 
 - **Header:** `Iso-uke,1958,1959,...,2025`
 - **Columns:** 
@@ -102,7 +101,7 @@ Each input file must follow a standardized format as described below. These form
   2,38,39,44,...,55,
   ```
 
-### 2. Reservoir Fill Level Files
+#### 2. Reservoir Fill Level Files
 
 - **Header:** `Kapasitet TWh,2022 TWh,...,Uke,Maks TWh,Min TWh,Median TWh,2023 TWh,2024 TWh,2025 TWh`
 - **Columns:**
@@ -115,7 +114,7 @@ Each input file must follow a standardized format as described below. These form
   6.0,3.0,...,1,4.6,2.7,3.7,3.7,3.6,
   ```
 
-### 3. Wind Production Files
+#### 3. Wind Production Files
 
 - **Header:** `Produksjon [MWh],Dato_Id`
 - **Columns:**
@@ -128,7 +127,7 @@ Each input file must follow a standardized format as described below. These form
   23,2018-07-27 00:00:00
   ```
 
-### 4. Consumption Files
+#### 4. Consumption Files
 
 - **Header:** `Date,Daily_Consumption`
 - **Columns:**
@@ -147,7 +146,7 @@ Ensure that:
 - Missing values are handled as blank cells
 
 
-### Results Directory (`results/run1/`)
+## Results Directory (`results/run1/`)
 
 For each zone (e.g., NO1 to NO5):
 
