@@ -90,67 +90,59 @@ energy_distribution/
 ## 3. Data Loading and Configuration
 Input Files:
 
-- Wind Production: ´input/{zone_id}_Wind_Production.csv´ with columns ´"Dato_Id"´ (date) and `"Produksjon [MWh]"`.
+- Wind Production: `input/{zone_id}_Wind_Production.csv` with columns `"Dato_Id"` (date) and `"Produksjon [MWh]"`.
 
-Consumption: input/{zone_id}_Consumption.csv with either a "Date" column and "Daily_Consumption" or sequential "Daily_Consumption" values.
+- Consumption: `input/{zone_id}_Consumption.csv` with either a `"Date"` column and `"Daily_Consumption"` or sequential `"Daily_Consumption"` values.
 
-Hydro Inflow: input/{zone_id}_Effective_Inflow.csv with column "T_Gj.snitt" (weekly average inflow; converted to daily values).
+- Hydro Inflow: `input/{zone_id}_Effective_Inflow.csv` with column `"T_Gj.snitt"` (weekly average inflow; converted to daily values).
 
-Optional Reservoir Fill Levels: input/{zone_id}_Reservoir_Fill_Level.csv with a week column (e.g., "Uke") and year-specific fill data to interpolate daily fill percentages.
+- Optional Reservoir Fill Levels: `input/{zone_id}_Reservoir_Fill_Level.csv` with a week column (e.g., `"Uke"`) and year-specific fill data to interpolate daily fill percentages.
 
-Date Range:
+**Date Range:**
 
-Simulation start date is taken either from command-line arguments or from DEFAULT_START_DATE in config.py.
+Simulation start date is taken either from command-line arguments or from ``DEFAULT_START_DATE` in `config.py`.
 
-The simulation runs for a number of days set by DEFAULT_SIMULATION_DAYS (or overridden via arguments).
+The simulation runs for a number of days set by `DEFAULT_SIMULATION_DAYS` (or overridden via arguments).
 
-Error Handling:
+**Error Handling:**
 
 Missing files or data for a day are logged and replaced with default values.
 
-4. Balancing Algorithm Details
+## 4. Balancing Algorithm Details
 Phases:
 
-Local Wind Production:
+1. Local Wind Production: Immediately satisfy demand using wind; record surplus as export.
 
-Immediately satisfy demand using wind; record surplus as export.
+2. First Import Phase: For zones with unmet demand, attempt to import energy from neighboring zones (direct or two-hop) from suppliers that are above their hydro_force_export threshold.
 
-First Import Phase:
+3. Local Hydro Production: Produce hydro energy locally to meet remaining demand.
 
-For zones with unmet demand, attempt to import energy from neighboring zones (direct or two-hop) from suppliers that are above their hydro_force_export threshold.
+4. Second Import Phase: For any residual unmet demand, attempt imports from all suppliers with extra capacity (ignoring the force export threshold).
 
-Local Hydro Production:
-
-Produce hydro energy locally to meet remaining demand.
-
-Second Import Phase:
-
-For any residual unmet demand, attempt imports from all suppliers with extra capacity (ignoring the force export threshold).
-
-Record Unmet Demand:
+5. Record Unmet Demand:
 
 Any remaining deficit is logged as unmet demand.
 
-Two-Hop Routing:
+**Two-Hop Routing:**
 
-A helper function import_from_neighbors is used to collect candidates from both one-hop and (if enabled) two-hop routes.
+A helper function `import_from_neighbors` is used to collect candidates from both one-hop and (if enabled) two-hop routes.
 
 The parameter enable_two_hop allows turning off two-hop routing if desired.
 
-Transfer records are generated with a "hops" key (1 or 2), and for two-hop transfers, the "transit_zone" is recorded along with details of connections used.
+Transfer records are generated with a `"hops"` key (1 or 2), and for two-hop transfers, the `"transit_zone"` is recorded along with details of connections used.
 
-Water Balance:
+**Water Balance:**
 
 Hydro water used is computed from total hydro production (local plus exported) divided by the efficiency.
 
-The reservoir storage is updated daily by subtracting water used and adding daily inflow, then clamped between hydro_min and hydro_max.
+The reservoir storage is updated daily by subtracting water used and adding daily inflow, then clamped between `hydro_min` and `hydro_max`.
 
 ## 5. Aggregated Daily Summary and Metrics
 For each simulation day, the Simulator must:
 
-Record detailed per-zone metrics (wind, demand, local production, imported energy, exported energy, unmet demand, water used).
+- Record detailed per-zone metrics (wind, demand, local production, imported energy, exported energy, unmet demand, water used).
 
-Compute an aggregated daily summary that separates imports into Phase 1 and Phase 2 (by summing transfer records with hops == 1 and hops == 2, respectively) and aggregates total wind used, local hydro production, total demand, and unmet demand.
+- Compute an aggregated daily summary that separates imports into `Phase 1` and `Phase 2` (by summing transfer records with `hops == 1` and `hops == 2`, respectively) and aggregates total wind used, local hydro production, total demand, and unmet demand.
 
 ## 6. Visualization
 The visualization module must include functions to:
@@ -161,13 +153,13 @@ Plot a chart where the total daily demand is a line, and behind it, the componen
 **Energy Exchange Network Diagram:**
 A function (e.g., `plot_energy_exchange_split_import_export` or `plot_energy_exchange_curved`) that:
 
-Uses zone coordinates from norway_setup.py.
+- Uses zone coordinates from norway_setup.py.
 
-For direct transfers (hops == 1), draws separate (slightly offset) arrows for export and import between zones.
+- For direct transfers `(hops == 1)`, draws separate (slightly offset) arrows for export and import between zones.
 
-For two-hop transfers (hops == 2), draws curved arrows summarizing the transfer between supplier and importer. Optionally, it can show two curved arrows (one for export, one for import) that touch the transit node; however, if labels overlap, it may summarize the flow directly between the supplier and importer.
+- For two-hop transfers `(hops == 2)`, draws curved arrows summarizing the transfer between supplier and importer. Optionally, it can show two curved arrows (one for export, one for import) that touch the transit node; however, if labels overlap, it may summarize the flow directly between the supplier and importer.
 
-Labels show energy amounts (converted to GWh with zero decimals).
+- Labels show energy amounts (converted to GWh with zero decimals).
 
 ## 7. Configuration and Logging
 Configuration:
@@ -191,19 +183,19 @@ Visualization functions produce output without overlapping labels.
 Driver Script:
 The run_simulation.py script should:
 
-Import configuration values from config.py.
+- Import configuration values from `config.py`.
 
-Use command-line arguments to optionally override simulation days, start date, and visualization options.
+- Use command-line arguments to optionally override simulation days, start date, and visualization options.
 
-Load data via data_handler.py.
+- Load data via `data_handler.py`.
 
-Set up the network using norway_setup.py.
+- Set up the network using `norway_setup.py`.
 
-Run the simulation using Simulator.
+- Run the simulation using Simulator.
 
-Output results and generate visualizations (unless disabled).
+- Output results and generate visualizations (unless disabled).
 
-Write logs to both console and a log file.
+- Write logs to both console and a log file.
 
 ## Final Note
 This prompt is designed to capture all the details necessary to build a robust Energy Distribution System with flexible balancing, detailed logging, and advanced visualizations. It covers data loading, multi-phase energy balancing with toggling of phases (including two-hop routing), aggregation of daily metrics, and clear visual summaries. Use this prompt to guide code generation, testing, and refinement.
