@@ -84,6 +84,69 @@ Example:
 - `NO1_Reservoir_Fill_Level.csv`
 - `NO1_Wind_Production.csv`
 
+
+## Input File Format Specifications
+
+Each input file must follow a standardized format as described below. These formats are essential for the parser to read and align the data properly.
+
+### 1. Effective Inflow Files
+
+- **Header:** `Iso-uke,1958,1959,...,2025`
+- **Columns:** 
+  - `Iso-uke`: Week number (1–52)
+  - Following columns: Annual inflow values per week (GWh or specified unit)
+- **Example:**
+  ```
+  Iso-uke,1958,1959,1960,...,2023,2024,2025
+  1,,49,72,...,60,
+  2,38,39,44,...,55,
+  ```
+
+### 2. Reservoir Fill Level Files
+
+- **Header:** `Kapasitet TWh,2022 TWh,...,Uke,Maks TWh,Min TWh,Median TWh,2023 TWh,2024 TWh,2025 TWh`
+- **Columns:**
+  - First row: Capacity and historical storage levels (TWh)
+  - `Uke`: Week number
+  - `Maks`, `Min`, `Median`, and future projections
+- **Example:**
+  ```
+  Kapasitet TWh,2022 TWh,...,Uke,Maks TWh,Min TWh,Median TWh,2023 TWh,2024 TWh,2025 TWh
+  6.0,3.0,...,1,4.6,2.7,3.7,3.7,3.6,
+  ```
+
+### 3. Wind Production Files
+
+- **Header:** `Produksjon [MWh],Dato_Id`
+- **Columns:**
+  - `Produksjon [MWh]`: Hourly production values
+  - `Dato_Id`: Timestamp (e.g., `2023-01-01 00:00:00`)
+- **Example:**
+  ```
+  Produksjon [MWh],Dato_Id
+  4,2018-07-26 00:00:00
+  23,2018-07-27 00:00:00
+  ```
+
+### 4. Consumption Files
+
+- **Header:** `Date,Daily_Consumption`
+- **Columns:**
+  - `Date`: In `YYYY-MM-DD` format
+  - `Daily_Consumption`: Daily total in MWh
+- **Example:**
+  ```
+  Date,Daily_Consumption
+  2020-12-31,4431.03
+  2021-01-01,115295.28
+  ```
+
+Ensure that:
+- All timestamps are consistent in timezone and format
+- Files are UTF-8 encoded
+- Missing values are handled as blank cells
+
+
 ### Results Directory (`results/run1/`)
 
 For each zone (e.g., NO1 to NO5):
