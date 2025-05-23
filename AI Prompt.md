@@ -38,7 +38,7 @@ Detailed per-zone metrics (e.g., wind used, local hydro production, imported ene
 
 - The connections used and the capacity consumed on each connection.
 
-- The system should log all important events, decisions, and metrics using Python’s logging module. Logging must be configurable (`log level`, `file output`).
+- The system should log all important events, decisions, and metrics using Python’s `logging` module. Logging must be configurable (`log level`, `file output`).
 
 **Aggregated Daily Summary:**
 For each simulation day, an aggregated summary is produced that includes:
