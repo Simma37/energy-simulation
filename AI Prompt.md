@@ -105,7 +105,7 @@ energy_distribution/
 ## 3. Data Loading and Configuration
 Input Files:
 
-Wind Production: input/{zone_id}_Wind_Production.csv with columns "Dato_Id" (date) and "Produksjon [MWh]".
+Wind Production: input/{zone_id}_Wind_Production.csv with columns "Dato_Id" (date) and `"Produksjon [MWh]"`.
 
 Consumption: input/{zone_id}_Consumption.csv with either a "Date" column and "Daily_Consumption" or sequential "Daily_Consumption" values.
 
@@ -170,11 +170,11 @@ Compute an aggregated daily summary that separates imports into Phase 1 and Phas
 ## 6. Visualization
 The visualization module must include functions to:
 
-Stacked Area Chart:
+**Stacked Area Chart:**
 Plot a chart where the total daily demand is a line, and behind it, the components (wind used, Phase 1 imports, local hydro production, Phase 2 imports, unmet demand) are plotted as stacked areas.
 
-Energy Exchange Network Diagram:
-A function (e.g., plot_energy_exchange_split_import_export or plot_energy_exchange_curved) that:
+**Energy Exchange Network Diagram:**
+A function (e.g., `plot_energy_exchange_split_import_export` or `plot_energy_exchange_curved`) that:
 
 Uses zone coordinates from norway_setup.py.
 
@@ -189,7 +189,7 @@ Configuration:
 Use config.py for default parameters (e.g., `DEFAULT_SIMULATION_DAYS`, `SIMULATION_WARM_UP_DAYS`, `DEFAULT_START_DATE`, `LOG_LEVEL`).
 
 Logging:
-Use a logging setup in utils.py that writes logs both to console and to a file (e.g., simulation.log). Log levels must include ERROR, INFO, and DEBUG/TRACE. Logging should cover data loading, balancing phases, transfers (with hop and transit information), and water storage updates.
+Use a logging setup in utils.py that writes logs both to console and to a file (e.g., `simulation.log`). Log levels must include `ERROR`, `INFO`, and `DEBUG/TRACE`. Logging should cover data loading, balancing phases, transfers (with hop and transit information), and water storage updates.
 
 ## 8. Testing
 Develop unit and integration tests in the tests/ folder that verify:
