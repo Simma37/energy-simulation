@@ -186,7 +186,8 @@ Labels show energy amounts (converted to GWh with zero decimals).
 
 ## 7. Configuration and Logging
 Configuration:
-Use config.py for default parameters (e.g., DEFAULT_SIMULATION_DAYS, SIMULATION_WARM_UP_DAYS, DEFAULT_START_DATE, LOG_LEVEL).
+Use config.py for default parameters 
+< (e.g., `DEFAULT_SIMULATION_DAYS`, SIMULATION_WARM_UP_DAYS, DEFAULT_START_DATE, LOG_LEVEL).
 
 Logging:
 Use a logging setup in utils.py that writes logs both to console and to a file (e.g., simulation.log). Log levels must include ERROR, INFO, and DEBUG/TRACE. Logging should cover data loading, balancing phases, transfers (with hop and transit information), and water storage updates.
