@@ -15,7 +15,7 @@ A zone first uses its own wind production, then imports energy (if needed) from 
 
 Imports can occur over direct (one-hop) routes or via indirect (two-hop) routes through a transit zone.
 
-Two import phases are defined:
+**Two import phases are defined:**
 
 Phase 2: Imports only from suppliers above their hydro_force_export threshold.
 
