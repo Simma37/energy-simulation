@@ -66,11 +66,21 @@ Example:
 - `NO1_Reservoir_Fill_Level.csv`
 - `NO1_Wind_Production.csv`
 
-## Output
+### Results Directory (`results/run1/`)
 
-- Per-zone and daily metrics as CSV
-- Visualizations as `.png` or `.pdf`
-- Log file (configurable)
+For each zone (e.g., NO1 to NO5):
+
+- `<ZONE>_daily_energy.pdf` – Daily energy balance visualization.
+- `<ZONE>_storage_levels.pdf` – Reservoir storage level over time.
+
+General results:
+
+- `config_description.txt` – Configuration metadata for the simulation run.
+- `daily_energy.pdf` – Aggregated energy metrics.
+- `energy_exchange.pdf` – Network diagram of inter-zonal energy transfers.
+- `energy_flows_summary.pdf` – Summary of energy flows by type and phase.
+- `storage_levels.pdf` – Absolute storage levels for all zones.
+- `storage_levels_relative.pdf` – Relative reservoir fill levels as percentage of capacity.
 
 ## License
 
