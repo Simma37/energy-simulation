@@ -146,7 +146,7 @@ Ensure that:
 - Missing values are handled as blank cells
 
 
-## Results Directory (`results/run1/`)
+## Results Directory (`results/`)
 
 For each zone (e.g., NO1 to NO5):
 
