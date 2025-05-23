@@ -38,9 +38,9 @@ For two-hop transfers, the transit zone is recorded
 
 The connections used and the capacity consumed on each connection.
 
-The system should log all important events, decisions, and metrics using Python’s logging module. Logging must be configurable (log level, file output).
+The system should log all important events, decisions, and metrics using Python’s logging module. Logging must be configurable (`log level`, `file output`).
 
-Aggregated Daily Summary:
+**Aggregated Daily Summary:**
 For each simulation day, an aggregated summary is produced that includes:
 
 Total demand
@@ -54,14 +54,14 @@ Local hydro production
 Unmet demand
 This summary is used for visualizations.
 
-Visualization:
+**Visualization:**
 Visualizations must include:
 
-Stacked Area Chart:
+1. Stacked Area Chart:
 
 A chart plotting the total daily demand as a line, with the components (wind, Phase 1 imports, local hydro production, Phase 2 imports, and unmet demand) shown as stacked areas behind the demand line.
 
-Energy Exchange Network Diagram:
+2. Energy Exchange Network Diagram:
 
 A network diagram (using zone coordinates from the configuration) that shows energy transfers between zones.
 
@@ -71,7 +71,7 @@ For two-hop transfers, instead of drawing both segments separately, display two 
 
 Additional Visualizations:
 
-Relative hydro storage trends (as a percentage) over time.
+3. Relative hydro storage trends (as a percentage) over time.
 
 ## 2. File Structure and Modules
 Organize the code into these files and directories:
