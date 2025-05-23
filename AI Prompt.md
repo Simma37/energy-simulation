@@ -17,7 +17,7 @@ Develop a Python module that simulates daily energy distribution across multiple
 
 **Two import phases are defined:**
 
-- Phase 2: Imports only from suppliers above their hydro_force_export threshold.
+- Phase 2: Imports only from suppliers above their `hydro_force_export` threshold.
 
 - Phase 4: Imports from all suppliers with extra capacity.
 
