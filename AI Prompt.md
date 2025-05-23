@@ -100,7 +100,7 @@ Input Files:
 
 **Date Range:**
 
-Simulation start date is taken either from command-line arguments or from ``DEFAULT_START_DATE` in `config.py`.
+Simulation start date is taken either from command-line arguments or from `DEFAULT_START_DATE` in `config.py`.
 
 The simulation runs for a number of days set by `DEFAULT_SIMULATION_DAYS` (or overridden via arguments).
 
