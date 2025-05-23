@@ -50,11 +50,21 @@ Make sure your input CSV files are correctly formatted and placed in the appropr
 
 ## Input Files
 
-- `Wind_Production_Year_Hour_[MWh].csv`
-- `Reservoir_Replenishment_Year_Week_[GWh].csv`
-- `Production_Yearly_Hour_[MWh].csv`
+The system expects the following per-zone CSV files in the `input/` directory:
 
-These should contain structured hourly/weekly/yearly data as required by the simulation.
+For each zone (e.g., NO1, NO2, ..., NO5):
+
+- `<ZONE>_Consumption.csv`
+- `<ZONE>_Effective_Inflow.csv`
+- `<ZONE>_Reservoir_Fill_Level.csv`
+- `<ZONE>_Wind_Production.csv`
+
+Example:
+
+- `NO1_Consumption.csv`
+- `NO1_Effective_Inflow.csv`
+- `NO1_Reservoir_Fill_Level.csv`
+- `NO1_Wind_Production.csv`
 
 ## Output
 
