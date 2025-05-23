@@ -5,15 +5,15 @@ Develop a Python module that simulates daily energy distribution across multiple
 
 ### Energy Sources:
 
-Wind: Produced based on historical data. Wind energy is used immediately (it cannot be stored); any surplus is exported.
+- Wind: Produced based on historical data. Wind energy is used immediately (it cannot be stored); any surplus is exported.
 
-Hydro: Produced based on water available above a minimum level and subject to turbine/generator capacity.
+- Hydro: Produced based on water available above a minimum level and subject to turbine/generator capacity.
 
 ### Energy Flow:
 
-A zone first uses its own wind production, then imports energy (if needed) from neighbors, then produces local hydro.
+- A zone first uses its own wind production, then imports energy (if needed) from neighbors, then produces local hydro.
 
-Imports can occur over direct (one-hop) routes or via indirect (two-hop) routes through a transit zone.
+- Imports can occur over direct (one-hop) routes or via indirect (two-hop) routes through a transit zone.
 
 **Two import phases are defined:**
 
