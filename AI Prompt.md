@@ -17,9 +17,9 @@ Develop a Python module that simulates daily energy distribution across multiple
 
 **Two import phases are defined:**
 
-Phase 2: Imports only from suppliers above their hydro_force_export threshold.
+- Phase 2: Imports only from suppliers above their hydro_force_export threshold.
 
-Phase 4: Imports from all suppliers with extra capacity.
+- Phase 4: Imports from all suppliers with extra capacity.
 
 In both phases, candidates are prioritized solely by the supplier’s relative water level, ensuring that zones at risk of overspill (i.e. above the force export threshold) are used preferentially.
 
@@ -32,26 +32,26 @@ Detailed per-zone metrics (e.g., wind used, local hydro production, imported ene
 
 #### Energy transfers (imports/exports) must be recorded with details, including:
 
-Number of hops (1 for direct, 2 for two-hop)
+- Number of hops (1 for direct, 2 for two-hop)
 
-For two-hop transfers, the transit zone is recorded
+- For two-hop transfers, the transit zone is recorded
 
-The connections used and the capacity consumed on each connection.
+- The connections used and the capacity consumed on each connection.
 
-The system should log all important events, decisions, and metrics using Python’s logging module. Logging must be configurable (`log level`, `file output`).
+- The system should log all important events, decisions, and metrics using Python’s logging module. Logging must be configurable (`log level`, `file output`).
 
 **Aggregated Daily Summary:**
 For each simulation day, an aggregated summary is produced that includes:
 
-Total demand
+- Total demand
 
-Total wind used (local consumption)
+- Total wind used (local consumption)
 
-Imported energy from Phase 2 (direct, one-hop) and Phase 4 (two-hop) separately
+- Imported energy from Phase 2 (direct, one-hop) and Phase 4 (two-hop) separately
 
-Local hydro production
+- Local hydro production
 
-Unmet demand
+- Unmet demand
 This summary is used for visualizations.
 
 **Visualization:**
@@ -60,15 +60,9 @@ Visualizations must include:
 1. Stacked Area Chart: A chart plotting the total daily demand as a line, with the components (wind, Phase 1 imports, local hydro production, Phase 2 imports, and unmet demand) shown as stacked areas behind the demand line.
 2. Energy Exchange Network Diagram: A network diagram (using zone coordinates from the configuration) that shows energy transfers between zones. For direct (one-hop) transfers, display two separate arrows (one representing export, one representing import) with a slight offset to avoid overlap. For two-hop transfers, instead of drawing both segments separately, display two curved arrows that touch the transit zone (or, if preferred, a single summarized curved arrow) with labels showing the energy amount (in GWh, with zero decimals).
 3. Relative hydro storage trends (as a percentage) over time.
-Additional Visualizations:
-
-
 
 ## 2. File Structure and Modules
 Organize the code into these files and directories:
-
-python
-Kopier
 
 ```
 energy_distribution/
@@ -96,7 +90,7 @@ energy_distribution/
 ## 3. Data Loading and Configuration
 Input Files:
 
-Wind Production: input/{zone_id}_Wind_Production.csv with columns "Dato_Id" (date) and `"Produksjon [MWh]"`.
+- Wind Production: ´input/{zone_id}_Wind_Production.csv´ with columns ´"Dato_Id"´ (date) and `"Produksjon [MWh]"`.
 
 Consumption: input/{zone_id}_Consumption.csv with either a "Date" column and "Daily_Consumption" or sequential "Daily_Consumption" values.
 
