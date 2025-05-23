@@ -57,7 +57,7 @@ This summary is used for visualizations.
 **Visualization:**
 Visualizations must include:
 
-1. Stacked Area Chart: A chart plotting the total daily demand as a line, with the components (wind, Phase 1 imports, local hydro production, Phase 2 imports, and unmet demand) shown as stacked areas behind the demand line.
+1. Stacked Area Chart: A chart plotting the total daily demand as a line, with the components (`wind`, `Phase 1 imports`, `local hydro production`, `Phase 2 imports`, and `unmet demand`) shown as stacked areas behind the demand line.
 2. Energy Exchange Network Diagram: A network diagram (using zone coordinates from the configuration) that shows energy transfers between zones. For direct (one-hop) transfers, display two separate arrows (one representing export, one representing import) with a slight offset to avoid overlap. For two-hop transfers, instead of drawing both segments separately, display two curved arrows that touch the transit zone (or, if preferred, a single summarized curved arrow) with labels showing the energy amount (in GWh, with zero decimals).
 3. Relative hydro storage trends (as a percentage) over time.
 
@@ -113,7 +113,7 @@ Phases:
 
 1. Local Wind Production: Immediately satisfy demand using wind; record surplus as export.
 
-2. First Import Phase: For zones with unmet demand, attempt to import energy from neighboring zones (direct or two-hop) from suppliers that are above their hydro_force_export threshold.
+2. First Import Phase: For zones with `unmet demand`, attempt to import energy from neighboring zones (direct or two-hop) from suppliers that are above their `hydro_force_export` threshold.
 
 3. Local Hydro Production: Produce hydro energy locally to meet remaining demand.
 
