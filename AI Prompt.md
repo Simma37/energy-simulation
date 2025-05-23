@@ -57,21 +57,12 @@ This summary is used for visualizations.
 **Visualization:**
 Visualizations must include:
 
-1. Stacked Area Chart:
-
-A chart plotting the total daily demand as a line, with the components (wind, Phase 1 imports, local hydro production, Phase 2 imports, and unmet demand) shown as stacked areas behind the demand line.
-
-2. Energy Exchange Network Diagram:
-
-A network diagram (using zone coordinates from the configuration) that shows energy transfers between zones.
-
-For direct (one-hop) transfers, display two separate arrows (one representing export, one representing import) with a slight offset to avoid overlap.
-
-For two-hop transfers, instead of drawing both segments separately, display two curved arrows that touch the transit zone (or, if preferred, a single summarized curved arrow) with labels showing the energy amount (in GWh, with zero decimals).
-
+1. Stacked Area Chart: A chart plotting the total daily demand as a line, with the components (wind, Phase 1 imports, local hydro production, Phase 2 imports, and unmet demand) shown as stacked areas behind the demand line.
+2. Energy Exchange Network Diagram: A network diagram (using zone coordinates from the configuration) that shows energy transfers between zones. For direct (one-hop) transfers, display two separate arrows (one representing export, one representing import) with a slight offset to avoid overlap. For two-hop transfers, instead of drawing both segments separately, display two curved arrows that touch the transit zone (or, if preferred, a single summarized curved arrow) with labels showing the energy amount (in GWh, with zero decimals).
+3. Relative hydro storage trends (as a percentage) over time.
 Additional Visualizations:
 
-3. Relative hydro storage trends (as a percentage) over time.
+
 
 ## 2. File Structure and Modules
 Organize the code into these files and directories:
