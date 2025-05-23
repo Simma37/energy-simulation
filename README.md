@@ -48,7 +48,25 @@ python run_simulation.py
 
 Make sure your input CSV files are correctly formatted and placed in the appropriate folder.
 
+The simulation behavior is controlled by `config.py`, which contains key parameters affecting the results:
+
+### Key Configuration Parameters
+
+- `DEFAULT_START_DATE` and `DEFAULT_SIMULATION_DAYS`: Define the simulation period.
+- `CONSUMPTION_FACTOR`: Scales baseline consumption (e.g., `1.16` = +16% increase).
+- `WIND_PRODUCTION_FACTOR`, `EFFECTIVE_INFLOW_FACTOR`, `RESERVOIR_FILL_LEVEL_FACTOR`: Scale wind production, inflow, and initial reservoir levels.
+- `HYDRO_EFFICIENCY`: Efficiency factor for hydroelectric conversion.
+- `ENABLE_WIND`, `ENABLE_LOCAL_HYDRO`: Enable/disable wind and hydro production.
+- `ENABLE_IMPORT_PHASE1`, `ENABLE_IMPORT_PHASE2`: Enable import logic for Phase 2 and Phase 4.
+- `ENABLE_TWO_HOP`: Allows two-hop routing between zones.
+- `SIMULATION_WARM_UP_DAYS`: Number of initial warm-up days (excluded from output).
+- `VISUALIZATION_ENABLED`: If set to `True`, generates all PDF plots.
+- `LOG_LEVEL`, `LOG_LEVEL_CONSOLE`: Control verbosity of file and console logs.
+
+These parameters allow you to conduct sensitivity analyses, scenario testing, and operational tuning of the simulation.
+
 ## Input Files
+
 
 The system expects the following per-zone CSV files in the `input/` directory:
 
