@@ -1,15 +1,15 @@
-#Energy Distribution System – Complete Implementation Specification and Code Review Prompt
+# Energy Distribution System – Complete Implementation Specification and Code Review Prompt
 
-##1. System Overview
+## 1. System Overview
 Develop a Python module that simulates daily energy distribution across multiple interconnected energy zones using historical data. The simulation must capture the dynamics of wind and hydroelectric power, enforce physical constraints (production capacities, hydro storage limits, and transmission capacities), and support flexible energy balancing. The system must:
 
-Energy Sources:
+### Energy Sources:
 
 Wind: Produced based on historical data. Wind energy is used immediately (it cannot be stored); any surplus is exported.
 
 Hydro: Produced based on water available above a minimum level and subject to turbine/generator capacity.
 
-Energy Flow:
+### Energy Flow:
 
 A zone first uses its own wind production, then imports energy (if needed) from neighbors, then produces local hydro.
 
@@ -23,10 +23,10 @@ Phase 4: Imports from all suppliers with extra capacity.
 
 In both phases, candidates are prioritized solely by the supplier’s relative water level, ensuring that zones at risk of overspill (i.e. above the force export threshold) are used preferentially.
 
-Phase Control:
+### Phase Control:
 The balancing algorithm must allow you to enable/disable each phase (e.g., wind production, import phases, local hydro production) and to toggle two-hop routing independently.
 
-Metrics & Logging:
+### Metrics & Logging:
 
 Detailed per-zone metrics (e.g., wind used, local hydro production, imported energy, exported energy, unmet demand, and water used for hydro production) must be captured daily.
 
@@ -73,7 +73,7 @@ Additional Visualizations:
 
 Relative hydro storage trends (as a percentage) over time.
 
-2. File Structure and Modules
+## 2. File Structure and Modules
 Organize the code into these files and directories:
 
 python
@@ -99,7 +99,8 @@ energy_distribution/
 ├── run_simulation.py  # Driver script: uses config.py values (with ability to override via command-line), loads data, runs simulation, and calls visualization functions.
 ├── tests/             # Unit and integration tests for core modules (models, simulator, balancing).
 └── examples/          # Example configuration files (e.g., example_config.json)
-3. Data Loading and Configuration
+
+## 3. Data Loading and Configuration
 Input Files:
 
 Wind Production: input/{zone_id}_Wind_Production.csv with columns "Dato_Id" (date) and "Produksjon [MWh]".
@@ -157,14 +158,14 @@ Hydro water used is computed from total hydro production (local plus exported) d
 
 The reservoir storage is updated daily by subtracting water used and adding daily inflow, then clamped between hydro_min and hydro_max.
 
-5. Aggregated Daily Summary and Metrics
+## 5. Aggregated Daily Summary and Metrics
 For each simulation day, the Simulator must:
 
 Record detailed per-zone metrics (wind, demand, local production, imported energy, exported energy, unmet demand, water used).
 
 Compute an aggregated daily summary that separates imports into Phase 1 and Phase 2 (by summing transfer records with hops == 1 and hops == 2, respectively) and aggregates total wind used, local hydro production, total demand, and unmet demand.
 
-6. Visualization
+## 6. Visualization
 The visualization module must include functions to:
 
 Stacked Area Chart:
@@ -181,14 +182,14 @@ For two-hop transfers (hops == 2), draws curved arrows summarizing the transfer 
 
 Labels show energy amounts (converted to GWh with zero decimals).
 
-7. Configuration and Logging
+## 7. Configuration and Logging
 Configuration:
 Use config.py for default parameters (e.g., DEFAULT_SIMULATION_DAYS, SIMULATION_WARM_UP_DAYS, DEFAULT_START_DATE, LOG_LEVEL).
 
 Logging:
 Use a logging setup in utils.py that writes logs both to console and to a file (e.g., simulation.log). Log levels must include ERROR, INFO, and DEBUG/TRACE. Logging should cover data loading, balancing phases, transfers (with hop and transit information), and water storage updates.
 
-8. Testing
+## 8. Testing
 Develop unit and integration tests in the tests/ folder that verify:
 
 Correct instantiation of core models (EnergyZone, Connection).
@@ -199,7 +200,7 @@ Proper aggregation of daily summaries.
 
 Visualization functions produce output without overlapping labels.
 
-9. Execution
+## 9. Execution
 Driver Script:
 The run_simulation.py script should:
 
@@ -217,5 +218,5 @@ Output results and generate visualizations (unless disabled).
 
 Write logs to both console and a log file.
 
-Final Note
+## Final Note
 This prompt is designed to capture all the details necessary to build a robust Energy Distribution System with flexible balancing, detailed logging, and advanced visualizations. It covers data loading, multi-phase energy balancing with toggling of phases (including two-hop routing), aggregation of daily metrics, and clear visual summaries. Use this prompt to guide code generation, testing, and refinement.
