@@ -61,7 +61,7 @@ class Simulator:
                 "local_production": zone.local_production,
                 "imported": zone.imported_energy,
                 "exported": zone.exported_energy,
-                "unmet_demand": zone.unmet_demand,
+                "unmet": zone.unmet_demand,
                 "spill": zone.hydro_spill
             }
 
