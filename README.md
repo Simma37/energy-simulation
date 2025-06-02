@@ -164,4 +164,4 @@ General results:
 
 ## License
 
-[Insert license type, e.g., MIT, GPLv3, etc.]
+This project is licensed under the **BSD 3-Clause License**.
