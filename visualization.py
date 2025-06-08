@@ -584,7 +584,7 @@ def plot_daily_energy_components_per_zone(simulator, output_file="daily_componen
         wind = [r["metrics"].get(zone, {}).get("wind", 0) for r in results]
         local_prod = [r["metrics"].get(zone, {}).get("local_production", 0) for r in results]
         imported = [r["metrics"].get(zone, {}).get("imported", 0) for r in results]
-        unmet = [r["metrics"].get(zone, {}).get("unmet", 0) for r in results]
+        unmet = [r["metrics"].get(zone, {}).get("unmet_demand", 0) for r in results]
         
         
         plt.figure(figsize=figsize)
